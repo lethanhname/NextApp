@@ -48,9 +48,9 @@ function AppAppBar(props) {
             underline="none"
             color="inherit"
             className={classes.title}
-            href={ process.env.REACT_APP_BASE_URL + ""}
+            href="/"
           >
-            {'onepirate'}
+            {'Next App'}
           </Link>
           <div className={classes.right}>
             <Link
@@ -58,7 +58,7 @@ function AppAppBar(props) {
               variant="h6"
               underline="none"
               className={classes.rightLink}
-              href={ process.env.REACT_APP_BASE_URL + "sign-in"}
+              href="/sign-in"
             >
               {'Sign In'}
             </Link>
@@ -66,7 +66,7 @@ function AppAppBar(props) {
               variant="h6"
               underline="none"
               className={clsx(classes.rightLink, classes.linkSecondary)}
-              href={ process.env.REACT_APP_BASE_URL + "sign-up"}
+              href="/sign-up"
             >
               {'Sign Up'}
             </Link>

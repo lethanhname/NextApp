@@ -57,7 +57,7 @@ function ProductValues(props) {
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                The best business solution
               </Typography>
               <Typography variant="h5">
                 {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
