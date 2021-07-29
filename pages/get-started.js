@@ -1,13 +1,12 @@
 import React from 'react';
 
+import GetStarted from '../src/features/get-started';
 import AppTheme from '../src/layout/AppTheme';
-import Home from '../src/features/home';
-
 
 export default function Page() {
   return (
     <AppTheme>
-      <Home />
+      <GetStarted />
     </AppTheme>
   );
 }

@@ -1,4 +1,3 @@
-import withLayout from '../../layout/withLayout';  
 // --- Post bootstrap -----
 /* eslint-disable @next/next/no-img-element */
 import NextLink from 'next/link';
@@ -27,4 +26,4 @@ function Home() {
     </React.Fragment>
   );
 }
-export default withLayout(Home);
+export default Home;
