@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '../../core/components/Typography';
+import Typography from '../../../common/components/Typography';
 
 const styles = (theme) => ({
   root: {

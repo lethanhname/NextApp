@@ -4,10 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Container from '@material-ui/core/Container';
-import Typography from '../../core/components/Typography';
-import TextField from '../../core/components/TextField';
-import Snackbar from '../../core/components/Snackbar';
-import Button from '../../core/components/Button';
+import Typography from '../../../common/components/Typography';
+import TextField from '../../../common/components/TextField';
+import Snackbar from '../../../common/components/Snackbar';
+import Button from '../../../common/components/Button';
 
 const styles = (theme) => ({
   root: {
