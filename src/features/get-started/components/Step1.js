@@ -1,6 +1,8 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField'
-function Step1({ updateFormData }) {
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+function Step1({ formData, activeStep, handleNext, handleBack, updateFormData }) {
   function handleParam (event) {
     
     const name = event.target.name;
@@ -16,6 +18,21 @@ function Step1({ updateFormData }) {
             placeholder="Your first name"
             onChange={handleParam}
           />
+          <div>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                  >
+                    {'Next'}
+                  </Button>
+                </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-function Step2({ updateFormData }) {
+import Button from '@material-ui/core/Button';
+function Step2({ formData, activeStep, handleNext, handleBack, updateFormData }) {
   function handleParam (event) {
     
     const name = event.target.name;
@@ -11,6 +12,21 @@ function Step2({ updateFormData }) {
       <p>
         name: <input name="name" onChange={handleParam} />
       </p>      
+      <div>
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                  >
+                    {'Next'}
+                  </Button>
+                </div>
     </div>
   );
 }
