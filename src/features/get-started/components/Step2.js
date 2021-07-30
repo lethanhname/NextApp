@@ -1,34 +1,120 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-function Step2({ formData, activeStep, handleNext, handleBack, updateFormData }) {
-  function handleParam (event) {
-    
-    const name = event.target.name;
-    const value = event.target.value;
-    updateFormData({name,value});
-  };
-  return (
-    <div>
-      <p>
-        name: <input name="name" onChange={handleParam} />
-      </p>      
-      <div>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                  >
-                    {'Next'}
-                  </Button>
-                </div>
-    </div>
-  );
-}
+import React, { useCallback, useContext } from 'react'
+import Grid from '@material-ui/core/Grid'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Checkbox from '@material-ui/core/Checkbox'
+import { GetStartedContext } from '../GetStartedContext'
 
-export default Step2;
+export default function Step2() {
+  const {
+    formValues,
+    handleChange,
+    handleBack,
+    handleNext,
+    variant,
+    margin
+  } = useContext(GetStartedContext)
+  const { city, date, phone, agreement } = formValues
+
+  const isError = useCallback(
+    () =>
+      Object.keys({ city, date, phone, agreement }).some(
+        (name) =>
+          (formValues[name].required && !formValues[name].value) ||
+          formValues[name].error
+      ),
+    [formValues, city, date, phone, agreement]
+  )
+
+  return (
+    <>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            label="City"
+            name="city"
+            placeholder="Enter your city"
+            value={city.value}
+            onChange={handleChange}
+            error={!!city.error}
+            helperText={city.error}
+            required={city.required}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            InputLabelProps={{
+              shrink: true
+            }}
+            label="Date of birth"
+            name="date"
+            type="date"
+            defaultValue={date.value}
+            onChange={handleChange}
+            required={date.required}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            label="Phone number"
+            name="phone"
+            placeholder="i.e: xxx-xxx-xxxx"
+            value={phone.value}
+            onChange={handleChange}
+            error={!!phone.error}
+            helperText={phone.error}
+            required={phone.required}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={agreement.value}
+                onChange={handleChange}
+                name="agreement"
+                color="primary"
+                required={agreement.required}
+              />
+            }
+            label="Agree to terms and conditions"
+          />
+          <FormHelperText error={!!agreement.error}>
+            {agreement.error}
+          </FormHelperText>
+        </Grid>
+      </Grid>
+      <div
+        style={{ display: 'flex', marginTop: 50, justifyContent: 'flex-end' }}
+      >
+        <Button
+          variant="contained"
+          color="default"
+          onClick={handleBack}
+          style={{ marginRight: 10 }}
+        >
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          disabled={isError()}
+          color="primary"
+          onClick={!isError() ? handleNext : () => null}
+        >
+          Next
+        </Button>
+      </div>
+    </>
+  )
+}
